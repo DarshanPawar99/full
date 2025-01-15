@@ -1,5 +1,5 @@
 pandas
 logging
 streamlit
-importlib-metadata
+importlib
 openpyxl
