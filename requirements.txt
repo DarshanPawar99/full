@@ -3,4 +3,3 @@ logging
 streamlit
 importlib-metadata
 openpyxl
-threading
