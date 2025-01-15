@@ -1,0 +1,7 @@
+pandas
+logging
+streamlit
+importlib-metadata
+openpyxl
+os
+threading
