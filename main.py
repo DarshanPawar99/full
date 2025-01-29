@@ -118,12 +118,13 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
 
             "business_logic_1": ["Gojek_NCR"], #gojek is ncr
             "business_logic_2": ["Odessa","Scaler-Prequin","Quzizz","Ather Mumbai","Groww Mumbai.","MPL-Delhi",
-                                 "Tadano","Epam", "O9 Solutions","Telstra Event sheet","Dynasty","pure_mg","Quest Hyderabad"],
+                                 "Tadano","Epam", "O9 Solutions","Telstra Event sheet","Dynasty","pure_mg","Quest Hyderabad","TCL CHENNAI",""],
             "business_logic_3": ["Groww"],
             "business_logic_4": ["Medtrix","MG Eli Lilly", "Awfis","Amadeus","Ather - Main Meal","Ajuba",
                                  "Drivers Tea HYD","Drivers Tea Chennai","Drivers Tea Blore","Vector_BLR","12D Weekend Packed Meal","LTIMindTree-event",
                                  "Clario", "Citrix Driver's Lunch & Dinner","Citrix-Tuckshop","MIQ","Vector","Lam Research","HD Works","Synergy",
-                                 "DTCC Company Paid","Gartner","Plan View","Siemens RGA","Solera","Master Card", "Moengage","Groww Jaipur","L & T  S1 Hebbal & Rga ","L & T Executive Lunch"],
+                                 "DTCC Company Paid","Gartner","Plan View","Siemens RGA","Solera","Master Card", "Moengage","Groww Jaipur","L & T  S1 Hebbal & Rga ",
+                                 "L & T Executive Lunch", "DTCC Pantry Hyd","Cigna ","Kongsberg Trail"],
            
             "business_logic_5": ["Microchip Main Meal","pure_highest_consumption","Trinity "],
             "business_logic_6": ["Plain View"],
@@ -160,7 +161,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
             "business_logic_37": [""],
             "business_logic_38": ["Truecaller"],
             "business_logic_39": [""],
-            "business_logic_40": ["Gold Hill-Main Meal","Goldhill Juice Junction.","Healthineer International","Priteck - Main meal","Pritech park Juice junction"],
+            "business_logic_40": ["Gold Hill-Main Meal","Goldhill Juice Junction.","Healthineer Adhoc or Event","Healthineer International","Priteck - Main meal","Pritech park Juice junction"],
             "business_logic_41": ["Siemens-BLR","Siemens Juice Counter"],
             "business_logic_42": ["Healthineer Factory"],
             "business_logic_43": ["Airtel Center","Airtel  Plot 5","Airtel NOC Non veg","Airtel international"],
