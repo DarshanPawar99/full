@@ -124,7 +124,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
                                  "Drivers Tea HYD","Drivers Tea Chennai","Drivers Tea Blore","Vector_BLR","12D Weekend Packed Meal","LTIMindTree-event",
                                  "Clario", "Citrix Driver's Lunch & Dinner","Citrix-Tuckshop","MIQ","Vector","Lam Research","HD Works","Synergy",
                                  "DTCC Company Paid","Gartner","Plan View","Siemens RGA","Solera","Master Card", "Moengage","Groww Jaipur","L & T  S1 Hebbal & Rga ",
-                                 "L & T Executive Lunch", "DTCC Pantry Hyd","Cigna ","Kongsberg Trail","DTCC Wallet Hyd"],
+                                 "L & T Executive Lunch", "DTCC Pantry Hyd","Cigna ","Kongsberg Trail","DTCC Wallet Hyd","Cognizant Hyd"],
            
             "business_logic_5": ["Microchip Main Meal","pure_highest_consumption","Trinity "],
             "business_logic_6": ["Plain View"],
