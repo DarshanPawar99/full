@@ -253,7 +253,8 @@ def find_buying_value_issues(df_filtered):
                 'Ordertype': row['order type'],
                 'Buying Pax': row['buying pax'],
                 'Buying Price AI': row['buying price ai'],
-                'Buying Amount AI': row['buying amt ai']
+                'Buying Amount AI': row['buying amt ai'],
+                'Remarks' : row['remarks']
             })
     return buying_value_issues
 
@@ -269,7 +270,8 @@ def find_selling_value_issues(df_filtered):
                 'Ordertype': row['order type'],
                 'Selling Pax': row['selling pax'],
                 'Selling Price': row['selling price'],
-                'Selling Amount': row['selling amount']
+                'Selling Amount': row['selling amount'],
+                'Remarks' : row['remarks']
             })
     return selling_value_issues
 
