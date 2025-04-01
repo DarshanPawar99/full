@@ -483,12 +483,12 @@ def dump_data(df_filtered, month, dump_file_path):
             if df_col in df_filtered.columns and dump_col in dump_df.columns:
                 mapped_df[dump_col] = df_filtered[df_col]
 
-        if 'selling management fee' in df_filtered.columns:
+        if 'Selling Management fee' in df_filtered.columns:
             # Group by 'site name' and calculate the sum of 'selling management fee' for each group
             grouped = df_filtered.groupby('site name')
 
             for site_name, group in grouped:
-                selling_sum = group['selling management fee'].sum()
+                selling_sum = group['Selling Management fee'].sum()
                 
                 # Create a new row for each group with the aggregated data
                 new_row = pd.DataFrame({
