@@ -54,14 +54,13 @@ def find_mismatches(df_filtered):
                                      + safe_get_value(row, 'buying transportation'))
             check_mismatch(row, index, 'buying amt ai', calculated_buying_amt, mismatched_data)
 
-
             # for Selling Management
             session = safe_get_value(row, 'site name')
-            if session == "gurgaon":
+            if session == "sales force - gur":
                 calculated_buying_pax = max(safe_get_value(row, 'ordered pax/vendor mg'), safe_get_value(row, 'actual consumption'))
                 check_mismatch(row, index, 'buying pax', calculated_buying_pax, mismatched_data)
 
-            elif session == "jaipur":
+            elif session == "sales force - jai":
                 calculated_buying_pax = max(safe_get_value(row, 'ordered pax/vendor mg'), safe_get_value(row, 'actual consumption'))
                 check_mismatch(row, index, 'buying pax', calculated_buying_pax, mismatched_data)
             else:
@@ -74,11 +73,11 @@ def find_mismatches(df_filtered):
 
             # for Selling Management
             session = safe_get_value(row, 'site name')
-            if session == "gurgaon":
+            if session == "sales force - gur":
                 calculated_selling_pax = safe_get_value(row, 'selling amount') * 0.1
                 check_mismatch(row, index, 'selling management fee', calculated_selling_pax, mismatched_data)
             
-            elif session == "jaipur":
+            elif session == "sales force - jai":
                 calculated_selling_pax = safe_get_value(row, 'selling amount') * 0.07
                 check_mismatch(row, index, 'selling management fee', calculated_selling_pax, mismatched_data)
             else:
@@ -376,7 +375,7 @@ def format_all_columns_with_color(df):
 def display_dataframes(pivot_df, mismatched_data, karbon_expenses_data, aggregated_data, buying_value_issues, selling_value_issues, popup_selling_issues, high_buying, summary_df, session_wise_df):
     st.write("Buying on Highest among Order MG, Actual Consumption")
     st.write("Selling on Highest among Client MG, Actual Consumption")
-    st.write("The Management-Fee for Gurgaon is 10% of Selling Amount\n  The Management-Fee for Jaipur is 7% of Selling Amount")
+    st.write("The Management-Fee for sales force - gur is 10% of Selling Amount\n  The Management-Fee for sales force - jai is 7% of Selling Amount")
 
     st.markdown("---")
     st.subheader("Average Buying Price and Selling Price")
