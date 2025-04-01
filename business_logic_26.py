@@ -32,9 +32,12 @@ def find_mismatches(df_filtered):
             calculated_buying_amt = safe_get_value(row, 'selling amount') - safe_get_value(row, 'commission')                   
             check_mismatch(row, index, 'buying amt ai', calculated_buying_amt, mismatched_data)
             
-            
             calculated_commission = safe_get_value(row, 'selling amount') * safe_get_value(row, 'comm%')                                 
             check_mismatch(row, index, 'commission', calculated_commission, mismatched_data)
+
+            calculated_commission = safe_get_value(row, 'selling amount') - safe_get_value(row, 'cash recived')                                 
+            check_mismatch(row, index, 'bill to client', calculated_commission, mismatched_data)
+
         except Exception as e:
             logging.error(f"Error processing row {index + 3}: {e}")
 
@@ -67,10 +70,10 @@ def find_karbon_expenses(df_filtered):
 def analysis_data(analysis_df, months_to_include):
 
     # Fill missing values with 0 for specified columns
-    columns_to_fill = ['amount', 'selling amount', 'commission', 'buying amt ai']
+    columns_to_fill = ['amount', 'bill to client', 'commission', 'buying amt ai']
     analysis_df[columns_to_fill] = analysis_df[columns_to_fill].fillna(0)
 
-    analysis_df['total_gmv'] = analysis_df['selling amount']
+    analysis_df['total_gmv'] = analysis_df['bill to client']
     analysis_df['total_buying'] = analysis_df['buying amt ai']
     analysis_df['net_revenue'] = analysis_df['commission'] - analysis_df['amount']
     analysis_df['karbon'] = analysis_df['amount']
@@ -117,11 +120,13 @@ def calculate_aggregated_values(df_filtered):
 
     regular_and_adhoc_orders = df_filtered[df_filtered['order type'].isin(['regular', 'smartq-pop-up', 'food trial', 'regular-pop-up'])]
     sum_buying_amt_ai_regular= regular_and_adhoc_orders['buying amt ai'].sum()
-    sum_selling_amt_regular = regular_and_adhoc_orders['selling amount'].sum()
+    sum_selling_amt_regular = regular_and_adhoc_orders['bill to client'].sum()
 
     event_and_popup_orders = df_filtered[df_filtered['order type'].isin(['event', 'event-pop-up', 'adhoc'])]
     sum_buying_amt_ai_event= event_and_popup_orders['buying amt ai'].sum()
-    sum_selling_amt_event = event_and_popup_orders['selling amount'].sum()
+    sum_selling_amt_event = event_and_popup_orders['bill to client'].sum()
+
+    sum_cash_recived = df_filtered['cash recived'].sum()
 
     sum_penalty_on_vendor = df_filtered['penalty on vendor'].sum()
     sum_penalty_on_smartq = df_filtered['penalty on smartq'].sum()
@@ -134,6 +139,7 @@ def calculate_aggregated_values(df_filtered):
         'Selling Amt (Regular)': sum_selling_amt_regular,
         'Buying Amt AI (Event)': sum_buying_amt_ai_event,
         'Selling Amt (Event)': sum_selling_amt_event,
+        'Cash Recived from Employee': sum_cash_recived,
         'Penalty on Vendor': sum_penalty_on_vendor,
         'Penalty on SmartQ': sum_penalty_on_smartq,
         'Commission': sum_commission,
@@ -156,7 +162,7 @@ def find_higher_buying(df_filtered):
                 'Buying Pax': row['buying pax'],
                 'Selling Pax': row['selling pax'],
                 'Buying Amount AI': row['buying amt ai'],
-                'Selling Amount': row['selling amount'],
+                'Selling Amount': row['bill to client'],
                 'Remarks': row['remarks']
             })
     return high_buying
@@ -172,7 +178,7 @@ def find_popup_selling_issues(df_filtered):
                 'Order Type': row['order type'],
                 'Selling Pax': row['selling pax'],
                 'Selling Price': row['selling price'],
-                'Selling Amount': row['selling amount']
+                'Selling Amount': row['bill to client']
             })
     return popup_selling_issues
 
@@ -298,9 +304,9 @@ def load_business_logic(df_filtered):
 
             pnl_data = pd.DataFrame({
                 'regular buying amount': [regular_amt['buying amt ai'].sum()],
-                'regular selling amount': [regular_amt['selling amount'].sum()],
+                'regular selling amount': [regular_amt['bill to client'].sum()],
                 'event buying amount': [event_amt['buying amt ai'].sum()],
-                'event selling amount': [event_amt['selling amount'].sum()],
+                'event selling amount': [event_amt['bill to client'].sum()],
                 'penalty on vendor': [full_data['penalty on vendor'].sum()],
                 'penalty on smartq': [full_data['penalty on smartq'].sum()],
                 'sams': [full_data['amount'].sum()]
@@ -498,7 +504,8 @@ def dump_data(df_filtered, month, dump_file_path):
         'meal type': 'meal type',
         'order type': 'order type',
         'buying amt ai': 'buying amt ai',
-        'selling amount': 'selling amount',
+        'cash recived': 'cash recived',
+        'selling amount': 'bill to client',
         'penalty on vendor': 'penalty on vendor',
         'penalty on smartq': 'penalty on smartq',
         'commission': 'commission',
