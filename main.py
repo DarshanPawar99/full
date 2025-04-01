@@ -147,14 +147,14 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
             "business_logic_23": ["Continental","actual_selling"],# need to update logic
             "business_logic_24": ["FRUIT N JUICE MIS"],
             "business_logic_25": ["Siemens"],
-            "business_logic_26": ["DTCC Wallet"],
+            "business_logic_26": ["DTCC Wallet", "Tredence - CHN"],
             "business_logic_27": ["Siemens_Pune"],
             "business_logic_28": ["CSG-Pune"],
             "business_logic_29": ["Salesforce"],
             "business_logic_30": ["Toasttab"],
-            "business_logic_31": [""],
+            "business_logic_31": ["TCL-RMZ","TCL-JTP"],
             "business_logic_32": ["Siemens_NCR"], # NCR
-            "business_logic_33": [""],
+            "business_logic_33": ["RNTBCI"],
             "business_logic_34": ["Sinch"],
             "business_logic_35": [""],
             "business_logic_36": ["Stryker"],
