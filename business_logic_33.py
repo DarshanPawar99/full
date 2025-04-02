@@ -223,7 +223,7 @@ def calculate_aggregated_values(df_filtered):
 
     sum_penalty_on_vendor = df_filtered['penalty on vendor'].sum()
     sum_penalty_on_smartq = df_filtered['penalty on smartq'].sum()
-    sum_cash_recived = df_filtered['direct payment from employee'].sum()
+    
     sum_commission = df_filtered['commission'].sum()
     sum_amount = df_filtered['amount'].sum()
 
@@ -240,7 +240,6 @@ def calculate_aggregated_values(df_filtered):
         'Selling Amt (Event)': sum_selling_amt_event,
         'Penalty on Vendor': sum_penalty_on_vendor,
         'Penalty on SmartQ': sum_penalty_on_smartq,
-        'Cash Recived From Employee': sum_cash_recived,
         'Commission': sum_commission,
         'Karbon Amount': sum_amount
     }
@@ -473,7 +472,6 @@ def load_business_logic(df_filtered):
                 'event selling amount': [event_amt['selling amount'].sum()],
                 'penalty on vendor': [full_data['penalty on vendor'].sum()],
                 'penalty on smartq': [full_data['penalty on smartq'].sum()],
-                'cash recevied' : [full_data['direct payment from employee'].sum()],
                 'sams': [full_data['amount'].sum()]
             })
 
@@ -684,7 +682,6 @@ def dump_data(df_filtered, month, dump_file_path):
         'selling pax': 'selling pax',
         'selling price': 'selling price',
         'selling transportation': 'selling transportation',
-        'cash recived': 'direct payment from employee',
         'selling amount': 'selling amount',
         'penalty on vendor': 'penalty on vendor',
         'penalty on smartq': 'penalty on smartq',
