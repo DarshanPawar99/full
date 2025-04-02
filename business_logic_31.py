@@ -414,7 +414,7 @@ def display_dataframes(pivot_df, mismatched_data, karbon_expenses_data, aggregat
     st.markdown("---")
 
 
-def business_logic_32(df_selected_month, analysis_df, months_to_include):
+def business_logic_31(df_selected_month, analysis_df, months_to_include):
     # Perform business logic on selected month and last three months data
     pivot_df = pivot_and_average_prices(df_selected_month)
     mismatched_data = find_mismatches(df_selected_month)
