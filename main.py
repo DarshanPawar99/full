@@ -124,7 +124,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
                                  "Drivers Tea HYD","Drivers Tea Chennai","Drivers Tea Blore","Vector_BLR","12D Weekend Packed Meal","LTIMindTree-event",
                                  "Clario", "Citrix Driver's Lunch & Dinner","Citrix-Tuckshop","MIQ","Vector","Lam Research","HD Works","Synergy",
                                  "DTCC Company Paid","Gartner","Plan View","Siemens RGA","Solera","Master Card", "Moengage","Groww Jaipur","L & T  S1 Hebbal & Rga ",
-                                 "L & T Executive Lunch", "DTCC Pantry Hyd","Cigna ","Kongsberg Trail","DTCC Wallet Hyd","Cognizant Hyd"],
+                                 "L & T Executive Lunch", "DTCC Pantry Hyd","Cigna ","Kongsberg ","DTCC Wallet Hyd","Cognizant"],
            
             "business_logic_5": ["Microchip Main Meal","pure_highest_consumption","Trinity "],
             "business_logic_6": ["Plain View"],
@@ -146,7 +146,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
             "business_logic_22": ["Ather Plant 1.","Ather Plant 2."],  
             "business_logic_23": ["Continental","actual_selling"],# need to update logic
             "business_logic_24": ["FRUIT N JUICE MIS"],
-            "business_logic_25": ["Siemens"],
+            "business_logic_25": ["Siemens","Siemens - GBS"],
             "business_logic_26": ["DTCC Wallet", "Tredence - CHN"],
             "business_logic_27": ["Siemens_Pune"],
             "business_logic_28": ["CSG-Pune"],
@@ -191,7 +191,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
 
 
             "event_logic_1": ["WF Chennai Events","WF Hyd Events","WF BLR Events","Tekion.","Citrix Events","Amazon PNQ Events","infosys Event Sales","Other Events."], 
-            "event_logic_2": [""],
+            "event_logic_2": ["Other Events-NCR",""],
             "event_logic_3": ["ICON CHN EVENT","Other Revenues Mumbai & Pune"],
             "event_logic_4": [""],
             "event_logic_5": [""],
@@ -200,7 +200,7 @@ def apply_business_logic(df_filtered, analysis_df, months_to_include, selected_s
             "event_logic_9": [""],
             "event_logic_10": [""],
             "event_logic_11": [""],
-            "event_logic_12": ["Airtel Event"],
+            "event_logic_12": ["Airtel Event",""],
             "event_logic_13": ["Icon-event-Bangalore"],
 
 
