@@ -600,7 +600,7 @@ def dump_data(df_filtered, month, dump_file_path):
         'month': 'month',
         'day': 'day',
         'cost centre': 'cost centre', 
-        'site name': 'site name',
+        'site name': 'site',
         'vendor code': 'vendor code',
         'vendor': 'vendor',
         'session': 'session',
