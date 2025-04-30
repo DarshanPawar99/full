@@ -53,10 +53,8 @@ def find_mismatches(df_filtered):
             check_mismatch(row, index, 'buying amt ai', calculated_buying_amt, mismatched_data)
 
             
-            if row['session'] == 'all day':
-                calculated_buying_pax = max(safe_get_value(row, 'ordered pax/vendor mg'),safe_get_value(row, 'actual consumption'))
-            else:
-                calculated_buying_pax = safe_get_value(row, 'ordered pax/vendor mg')
+            
+            calculated_buying_pax = safe_get_value(row, 'ordered pax/vendor mg')
             check_mismatch(row, index, 'buying pax', calculated_buying_pax, mismatched_data)
 
 
