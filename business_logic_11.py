@@ -46,6 +46,21 @@ def find_mismatches(df_filtered):
     for index, row in df_filtered.iterrows():
         try:
             
+            # for buying pax
+            session_val = safe_get_value(row, 'session')
+            order_type = safe_get_value(row, 'order type')
+
+            # decide whether to subtract actual consumption
+            if session_val == "midnight snacks" or order_type in ("adhoc", "event"):
+                calculated_buying_pax = safe_get_value(row, 'ordered pax/vendor mg')
+            else:
+                calculated_buying_pax = (
+                    safe_get_value(row, 'ordered pax/vendor mg') - safe_get_value(row, 'actual consumption')
+                )
+
+            check_mismatch(row, index, 'buying pax', calculated_buying_pax, mismatched_data)
+
+
             calculated_to_bill = safe_get_value(row, 'ordered pax/vendor mg') - safe_get_value(row, 'actual consumption')
             check_mismatch(row, index, 'buying pax', calculated_to_bill, mismatched_data)
 
@@ -57,8 +72,19 @@ def find_mismatches(df_filtered):
             check_mismatch(row, index, 'buying amt ai', calculated_buying_amt, mismatched_data)
 
             
-            calculated_to_bill = safe_get_value(row, 'client mg/pre order') - safe_get_value(row, 'actual consumption')
-            check_mismatch(row, index, 'selling pax', calculated_to_bill, mismatched_data)
+            # for buying pax
+            session_val = safe_get_value(row, 'session')
+            order_type = safe_get_value(row, 'order type')
+
+            # decide whether to subtract actual consumption
+            if session_val == "midnight snacks" or order_type in ("adhoc", "event"):
+                calculated_buying_pax = safe_get_value(row, 'client mg/pre order')
+            else:
+                calculated_buying_pax = (
+                    safe_get_value(row, 'client mg/pre order') - safe_get_value(row, 'actual consumption')
+                )
+
+            check_mismatch(row, index, 'selling pax', calculated_buying_pax, mismatched_data)
 
 
 
