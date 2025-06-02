@@ -256,6 +256,25 @@ def pd_session_wise(df_filtered):
         return session_wise_df
     else:
         raise ValueError("Required columns (session, selling pax, buying pax) are missing in the DataFrame.")
+    
+
+
+#-----------------------------------new section----------------------------------------------------------------------------
+def find_higher_buying(df_filtered):
+    high_buying = []
+    for index, row in df_filtered.iterrows():
+        if (safe_get_value(row, 'total pax buying') > safe_get_value(row, 'total pax selling') > 0) or (safe_get_value(row, 'buying amount') > safe_get_value(row, 'total sales') > 0):
+            high_buying.append({
+                'Row': index + 3,
+                'Date': row['date'],
+                'Mealtype': row['meal type (only lunch)'],
+                'Buying Pax': row['total pax buying'],
+                'Selling Pax': row['total pax selling'],
+                'Buying Amount AI': row['buying amount'],
+                'Selling Amount': row['total sales'],
+                'Remarks': row['remarks']
+            })
+    return high_buying
 
 
 
@@ -318,7 +337,7 @@ def format_all_columns_with_color(df):
     return styled_df
 
 
-def display_dataframes(pivot_df, mismatched_data, aggregated_data, summary_df, session_wise_df):
+def display_dataframes(pivot_df, mismatched_data, aggregated_data, summary_df, high_buying, session_wise_df):
     st.write("This site as Training New Joining  Staff")
     st.write("It is a subsidiary model")
     st.markdown("---")
@@ -332,6 +351,14 @@ def display_dataframes(pivot_df, mismatched_data, aggregated_data, summary_df, s
         st.table(format_dataframe(mismatched_df))
     else:
         st.write("<span style='color:green'>No mismatch found.</span> :white_check_mark:", unsafe_allow_html=True)
+    st.markdown("---")
+
+    if high_buying:
+        high_buying_df = pd.DataFrame(high_buying)
+        st.write("<span style='color:red'>Higher Buying Value/Pax Found</span> :heavy_exclamation_mark:", unsafe_allow_html=True)
+        st.dataframe(format_dataframe(high_buying_df))
+    else:
+        st.write("<span style='color:green'>No Higher Buying Value/Pax Found.</span> :white_check_mark:", unsafe_allow_html=True)
     st.markdown("---")
 
     aggregated_df = pd.DataFrame(list(aggregated_data.items()), columns=['Parameter', 'Value'])
@@ -353,6 +380,7 @@ def business_logic_43(df_selected_month, analysis_df, months_to_include):
     # Perform business logic on selected month and last three months data
     pivot_df = pivot_and_average_prices(df_selected_month)
     mismatched_data = find_mismatches(df_selected_month)
+    high_buying = find_higher_buying(df_selected_month)
     aggregated_data = calculate_aggregated_values(df_selected_month)
     session_wise_df = pd_session_wise(df_selected_month)
     
@@ -360,7 +388,7 @@ def business_logic_43(df_selected_month, analysis_df, months_to_include):
     summary_df = analysis_data(analysis_df, months_to_include)  # Pass months_to_include here
 
     # Display all relevant dataframes and results
-    display_dataframes(pivot_df, mismatched_data, aggregated_data, summary_df, session_wise_df)
+    display_dataframes(pivot_df, mismatched_data, aggregated_data, summary_df, high_buying, session_wise_df)
 
 #-----------------------------------------------------auto Pnl------------------------------------------------------------------
 def load_business_logic(df_filtered):
